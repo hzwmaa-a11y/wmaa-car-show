@@ -94,7 +94,7 @@
   @media (max-width: 680px) { .brand-strip .tagline { display: none; } }
 
   /* ======================================================
-     HERO — repeating CAR SHOW background
+     HERO — repeating CAR SHOW background, centered
      ====================================================== */
   .hero {
     position: relative;
@@ -112,14 +112,15 @@
   }
   .hero-bg .stack {
     font-family: 'Anton', 'Impact', sans-serif;
-    font-size: clamp(90px, 22vw, 260px);
+    font-size: clamp(80px, 18vw, 200px);
     line-height: 0.82;
     letter-spacing: -0.02em;
     font-weight: 400;
     white-space: nowrap;
     position: absolute;
-    left: -4%;
-    right: -4%;
+    left: 0;
+    right: 0;
+    text-align: center;
   }
   .hero-bg .s1 { top: -4%;  color: var(--orange); opacity: 1; }
   .hero-bg .s2 { top: 14%;  color: var(--orange-deep); opacity: 0.85; }
@@ -136,33 +137,6 @@
     min-height: 340px;
     display: flex;
     flex-direction: column;
-  }
-
-  .hero-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Archivo', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    color: var(--orange);
-  }
-  .hero-topbar .left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-topbar .hero-logo {
-    width: 36px;
-    height: 36px;
-    opacity: 0.95;
-  }
-  .hero-topbar .hero-logo img { width: 100%; height: 100%; display: block; }
-
-  @media (max-width: 600px) {
-    .hero-topbar { font-size: 10px; letter-spacing: 0.1em; }
-    .hero-topbar .hero-logo { width: 28px; height: 28px; }
   }
 
   .pill-row {
@@ -655,13 +629,6 @@
     <div class="stack s6">CAR SHOW</div>
   </div>
   <div class="hero-inner">
-    <div class="hero-topbar">
-      <div class="left">
-        <div class="hero-logo"><img src="logo.png" alt=""></div>
-        <span>WORLD MARTIAL ARTS</span>
-      </div>
-      <span>PRESENTS</span>
-    </div>
     <div class="pill-row">
       <span class="pill">Cars</span>
       <span class="pill">Food Trucks</span>
@@ -854,7 +821,7 @@
 
 <script>
   // ====== CONFIG ======
-  const SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwEC3C8WKBlZPLjcvebw95WrO8fNo3flc8Qb2Lu9ClyMKSMd_os1YCevJ7sR-672jQegw/exec';
   const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/V7LVQ2L2S97C4';
   // Registration deadline: end of day May 9, 2026 Central
   const DEADLINE = new Date('2026-05-10T05:00:00Z');
