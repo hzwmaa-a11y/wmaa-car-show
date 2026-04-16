@@ -133,14 +133,15 @@
     z-index: 2;
     max-width: 1000px;
     margin: 0 auto;
-    min-height: 300px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
   }
 
   .hero-topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 72px;
     font-family: 'Archivo', sans-serif;
     font-size: 12px;
     font-weight: 800;
@@ -160,7 +161,7 @@
   .hero-topbar .hero-logo img { width: 100%; height: 100%; display: block; }
 
   @media (max-width: 600px) {
-    .hero-topbar { font-size: 10px; letter-spacing: 0.1em; margin-bottom: 60px;}
+    .hero-topbar { font-size: 10px; letter-spacing: 0.1em; }
     .hero-topbar .hero-logo { width: 28px; height: 28px; }
   }
 
@@ -168,10 +169,13 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-top: 140px;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    padding: 60px 0;
   }
   @media (max-width: 600px) {
-    .pill-row { margin-top: 100px; gap: 8px; }
+    .pill-row { gap: 8px; padding: 48px 0; }
   }
 
   .pill {
@@ -231,58 +235,6 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 1.4;
-  }
-
-  /* ======================================================
-     WMAA ACADEMY STRIP — reinforces branding under event band
-     ====================================================== */
-  .academy-strip {
-    background: #000;
-    padding: 28px 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .academy-strip-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-  .academy-strip .big-logo {
-    width: 72px;
-    height: 72px;
-    flex-shrink: 0;
-  }
-  .academy-strip .big-logo img { width: 100%; height: 100%; display: block; }
-  .academy-strip .text {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    text-align: left;
-  }
-  .academy-strip .text .hosted {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--orange);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  .academy-strip .text .name {
-    font-family: 'Anton', sans-serif;
-    font-size: 28px;
-    color: #fff;
-    letter-spacing: 0.03em;
-    line-height: 1;
-  }
-  @media (max-width: 500px) {
-    .academy-strip-inner { flex-direction: column; gap: 12px; }
-    .academy-strip .text { text-align: center; }
-    .academy-strip .big-logo { width: 56px; height: 56px; }
-    .academy-strip .text .name { font-size: 22px; }
   }
 
   /* ======================================================
@@ -737,17 +689,6 @@
     </div>
   </div>
 </section>
-
-<!-- ==================== ACADEMY CALLOUT ==================== -->
-<div class="academy-strip">
-  <div class="academy-strip-inner">
-    <div class="big-logo"><img src="logo.png" alt="WMAA logo"></div>
-    <div class="text">
-      <span class="hosted">Hosted By</span>
-      <span class="name">WORLD MARTIAL ARTS ACADEMY</span>
-    </div>
-  </div>
-</div>
 
 <!-- ==================== FORM ==================== -->
 <div class="wrap">
