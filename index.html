@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WMAA Car Show — Register | May 23, 2026</title>
+<meta name="description" content="Register your ride for the World Martial Arts Academy Car Show on Saturday, May 23, 2026, 8 AM to Noon in Hazelwood, MO. Cars, food trucks, fun.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #141414;
+    --bg-3: #1c1c1c;
+    --ink: #ffffff;
+    --ink-dim: #a8a8a0;
+    --orange: #ff6b1f;
+    --orange-deep: #d85515;
+    --orange-dark: #8a3510;
+    --line: #2a2a28;
+    --ok: #4ade80;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ======================================================
+     BRAND HEADER — top strip, logo + name
+     ====================================================== */
+  .brand-strip {
+    position: relative;
+    z-index: 3;
+    background: #000;
+    padding: 16px 24px;
+    border-bottom: 2px solid var(--orange);
+  }
+  .brand-strip-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand-strip .logo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+  .brand-strip .logo img { width: 100%; height: 100%; display: block; }
+
+  .brand-strip .wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-strip .wordmark .top {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    color: #fff;
+    line-height: 1;
+  }
+  .brand-strip .wordmark .sub {
+    font-family: 'Archivo', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    margin-top: 4px;
+  }
+  @media (max-width: 500px) {
+    .brand-strip .logo { width: 44px; height: 44px; }
+    .brand-strip .wordmark .top { font-size: 18px; }
+    .brand-strip .wordmark .sub { font-size: 9px; letter-spacing: 0.2em; }
+  }
+
+  .brand-strip .tagline {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+  @media (max-width: 680px) { .brand-strip .tagline { display: none; } }
+
+  /* ======================================================
+     HERO — repeating CAR SHOW background
+     ====================================================== */
+  .hero {
+    position: relative;
+    padding: 60px 24px 48px;
+    overflow: hidden;
+    border-bottom: 4px solid var(--orange);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-bg .stack {
+    font-family: 'Anton', 'Impact', sans-serif;
+    font-size: clamp(90px, 22vw, 260px);
+    line-height: 0.82;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    white-space: nowrap;
+    position: absolute;
+    left: -4%;
+    right: -4%;
+  }
+  .hero-bg .s1 { top: -4%;  color: var(--orange); opacity: 1; }
+  .hero-bg .s2 { top: 14%;  color: var(--orange-deep); opacity: 0.85; }
+  .hero-bg .s3 { top: 32%;  color: var(--orange-dark); opacity: 0.65; }
+  .hero-bg .s4 { top: 50%;  color: #5a2510; opacity: 0.55; }
+  .hero-bg .s5 { top: 68%;  color: #3d1a0b; opacity: 0.45; }
+  .hero-bg .s6 { top: 86%;  color: #2a1208; opacity: 0.35; }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 300px;
+  }
+
+  .hero-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+  }
+  .hero-topbar .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-topbar .hero-logo {
+    width: 36px;
+    height: 36px;
+    opacity: 0.95;
+  }
+  .hero-topbar .hero-logo img { width: 100%; height: 100%; display: block; }
+
+  @media (max-width: 600px) {
+    .hero-topbar { font-size: 10px; letter-spacing: 0.1em; margin-bottom: 60px;}
+    .hero-topbar .hero-logo { width: 28px; height: 28px; }
+  }
+
+  .pill-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 140px;
+  }
+  @media (max-width: 600px) {
+    .pill-row { margin-top: 100px; gap: 8px; }
+  }
+
+  .pill {
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 12px 24px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  @media (max-width: 600px) {
+    .pill { font-size: 11px; padding: 10px 18px; letter-spacing: 0.08em; }
+  }
+
+  /* ======================================================
+     ORANGE BAND
+     ====================================================== */
+  .event-band {
+    background: var(--orange);
+    color: #111;
+    padding: 40px 24px;
+  }
+  .event-band-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .event-band-inner { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .event-col { border-top: 1.5px solid #111; padding-top: 16px; }
+  .event-col h3 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .event-col p {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+  }
+  .event-col p.small {
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  /* ======================================================
+     WMAA ACADEMY STRIP — reinforces branding under event band
+     ====================================================== */
+  .academy-strip {
+    background: #000;
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .academy-strip-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .academy-strip .big-logo {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+  .academy-strip .big-logo img { width: 100%; height: 100%; display: block; }
+  .academy-strip .text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+  }
+  .academy-strip .text .hosted {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--orange);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .academy-strip .text .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+  @media (max-width: 500px) {
+    .academy-strip-inner { flex-direction: column; gap: 12px; }
+    .academy-strip .text { text-align: center; }
+    .academy-strip .big-logo { width: 56px; height: 56px; }
+    .academy-strip .text .name { font-size: 22px; }
+  }
+
+  /* ======================================================
+     MAIN CONTENT
+     ====================================================== */
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+
+  .deadline-banner {
+    background: #1a0f08;
+    border-left: 4px solid var(--orange);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .deadline-banner .big {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .deadline-banner .txt {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.5;
+    flex: 1;
+    min-width: 200px;
+  }
+  .deadline-banner .txt strong { color: var(--ink); }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    margin-bottom: 56px;
+    max-width: 640px;
+  }
+  .lede strong { color: var(--ink); font-weight: 800; }
+
+  /* FORM */
+  form { display: flex; flex-direction: column; gap: 44px; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-head .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .section-head h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+  .section-head hr { flex: 1; border: none; border-top: 1px solid var(--line); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  @media (max-width: 600px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .field label .req { color: var(--orange); }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="number"] {
+    background: var(--bg-2);
+    border: 1.5px solid var(--line);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 16px;
+    transition: border-color 0.15s, background 0.15s;
+    border-radius: 0;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--orange);
+    background: #1a1410;
+  }
+  .field input::placeholder { color: #555; font-weight: 400; }
+
+  /* CLASSES */
+  .class-note { color: var(--ink-dim); font-size: 14px; margin-bottom: 16px; }
+  .class-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .class-grid { grid-template-columns: 1fr; } }
+
+  .class-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+  }
+  .class-card input { position: absolute; opacity: 0; pointer-events: none; }
+  .class-card .box {
+    border: 1.5px solid var(--line);
+    background: var(--bg-2);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.15s;
+  }
+  .class-card .checkmark {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #444;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .class-card .checkmark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--orange);
+    transform: scale(0);
+    transition: transform 0.15s;
+  }
+  .class-card .label {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+  }
+  .class-card input:checked ~ .box {
+    border-color: var(--orange);
+    background: #1a1410;
+  }
+  .class-card input:checked ~ .box .checkmark { border-color: var(--orange); }
+  .class-card input:checked ~ .box .checkmark::after { transform: scale(1); }
+  .class-card:hover .box { border-color: #555; }
+
+  /* TOTAL */
+  .total-bar {
+    background: var(--bg-2);
+    border: 1.5px solid var(--line);
+    border-left: 4px solid var(--orange);
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .total-bar .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .total-bar .v {
+    font-family: 'Anton', sans-serif;
+    font-size: 52px;
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .total-bar .v .cents { font-size: 24px; color: var(--ink-dim); }
+
+  /* SUBMIT */
+  button[type="submit"] {
+    background: var(--orange);
+    color: #111;
+    border: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.03em;
+    padding: 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.15s, transform 0.1s;
+    border-radius: 999px;
+    font-weight: 400;
+  }
+  button[type="submit"]:hover { background: #ff8240; }
+  button[type="submit"]:active { transform: translateY(1px); }
+  button[type="submit"]:disabled {
+    background: #3a3a3a;
+    color: #777;
+    cursor: not-allowed;
+  }
+  button[type="submit"] .arrow { display: inline-block; margin-left: 8px; transition: transform 0.15s; }
+  button[type="submit"]:hover .arrow { transform: translateX(6px); }
+
+  .fine-print {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* CONFIRMATION */
+  .confirm {
+    display: none;
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .confirm.active { display: block; }
+  .confirm .checkmark-big {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--ok);
+    border-radius: 50%;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: var(--ok);
+    animation: pop 0.4s ease-out;
+  }
+  @keyframes pop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  .confirm h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 64px;
+    margin-bottom: 16px;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+  }
+  .confirm p {
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .summary {
+    background: var(--bg-2);
+    border: 1.5px solid var(--line);
+    padding: 28px;
+    margin: 0 auto 40px;
+    text-align: left;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    gap: 16px;
+  }
+  .summary-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .summary-row:first-child { padding-top: 0; }
+  .summary-row .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    padding-top: 3px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .summary-row .v { font-weight: 700; text-align: right; max-width: 60%; }
+  .pay-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #111;
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    padding: 20px 48px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    border-radius: 999px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .pay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -8px var(--orange);
+  }
+
+  .error-msg {
+    background: #2a0f08;
+    border-left: 4px solid var(--orange);
+    color: #ffc9ae;
+    padding: 14px 18px;
+    font-size: 14px;
+    display: none;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 24px;
+  }
+  .error-msg.active { display: block; }
+
+  .closed-view {
+    display: none;
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .closed-view.active { display: block; }
+  .closed-view h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 56px;
+    margin-bottom: 16px;
+    color: var(--orange);
+  }
+  .closed-view p {
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0,0,0,0.3);
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 24px 40px;
+    border-top: 1px solid var(--line);
+    background: #000;
+  }
+  .footer-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .footer-logo { width: 64px; height: 64px; flex-shrink: 0; }
+  .footer-logo img { width: 100%; height: 100%; display: block; }
+  .footer-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+    text-align: left;
+  }
+  .footer-text .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  @media (max-width: 500px) {
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-text { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== TOP BRAND STRIP ==================== -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <div class="logo"><img src="logo.png" alt="World Martial Arts Academy"></div>
+    <div class="wordmark">
+      <span class="top">WORLD MARTIAL ARTS</span>
+      <span class="sub">ACADEMY · HAZELWOOD</span>
+    </div>
+    <div class="tagline">EST. TRAIN · COMPETE · COMMUNITY</div>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="stack s1">CAR SHOW</div>
+    <div class="stack s2">CAR SHOW</div>
+    <div class="stack s3">CAR SHOW</div>
+    <div class="stack s4">CAR SHOW</div>
+    <div class="stack s5">CAR SHOW</div>
+    <div class="stack s6">CAR SHOW</div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-topbar">
+      <div class="left">
+        <div class="hero-logo"><img src="logo.png" alt=""></div>
+        <span>WORLD MARTIAL ARTS</span>
+      </div>
+      <span>PRESENTS</span>
+    </div>
+    <div class="pill-row">
+      <span class="pill">Cars</span>
+      <span class="pill">Food Trucks</span>
+      <span class="pill">Fun</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EVENT BAND ==================== -->
+<section class="event-band">
+  <div class="event-band-inner">
+    <div class="event-col">
+      <h3>Date & Time</h3>
+      <p>23 MAY</p>
+      <p>8 AM — NOON</p>
+    </div>
+    <div class="event-col">
+      <h3>Entry Fee</h3>
+      <p>$25</p>
+      <p class="small">per vehicle — enter any/all 5 classes</p>
+    </div>
+    <div class="event-col">
+      <h3>Location</h3>
+      <p class="small">8002 N LINDBERGH BLVD<br>HAZELWOOD, MO 63042</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACADEMY CALLOUT ==================== -->
+<div class="academy-strip">
+  <div class="academy-strip-inner">
+    <div class="big-logo"><img src="logo.png" alt="WMAA logo"></div>
+    <div class="text">
+      <span class="hosted">Hosted By</span>
+      <span class="name">WORLD MARTIAL ARTS ACADEMY</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FORM ==================== -->
+<div class="wrap">
+  <div id="form-view">
+
+    <div class="deadline-banner">
+      <div class="big">MAY 9</div>
+      <div class="txt">
+        <strong>Registration deadline.</strong> You must be registered by Friday, May 9, 2026 to be eligible to compete. After that, spots close.
+      </div>
+    </div>
+
+    <p class="lede">
+      Join us for an exciting day of cars, community, and competition at <strong>World Martial Arts Academy Hazelwood.</strong> Showcase your vehicle or come admire an incredible lineup while enjoying food trucks and a fun atmosphere for all ages. Vehicles will be judged across five classes — <strong>$25</strong> gets you in.
+    </p>
+
+    <div id="error-msg" class="error-msg"></div>
+
+    <form id="registration-form" novalidate>
+
+      <!-- 01 DRIVER -->
+      <div>
+        <div class="section-head">
+          <span class="num">01 /</span>
+          <h2>Driver Info</h2>
+          <hr>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="firstName">First Name <span class="req">*</span></label>
+            <input type="text" id="firstName" name="firstName" required placeholder="John">
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name <span class="req">*</span></label>
+            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="(314) 555-0123">
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 VEHICLE -->
+      <div>
+        <div class="section-head">
+          <span class="num">02 /</span>
+          <h2>Vehicle</h2>
+          <hr>
+        </div>
+        <div class="grid-3" style="margin-bottom: 20px;">
+          <div class="field">
+            <label for="year">Year <span class="req">*</span></label>
+            <input type="number" id="year" name="year" required placeholder="1969" min="1900" max="2027">
+          </div>
+          <div class="field">
+            <label for="make">Make <span class="req">*</span></label>
+            <input type="text" id="make" name="make" required placeholder="Chevrolet">
+          </div>
+          <div class="field">
+            <label for="model">Model <span class="req">*</span></label>
+            <input type="text" id="model" name="model" required placeholder="Camaro">
+          </div>
+        </div>
+        <div class="field">
+          <label for="description">Short Description (optional)</label>
+          <input type="text" id="description" name="description" placeholder="Matte black, LS swap, one of a kind">
+        </div>
+      </div>
+
+      <!-- 03 CLASSES -->
+      <div>
+        <div class="section-head">
+          <span class="num">03 /</span>
+          <h2>Classes Entered</h2>
+          <hr>
+        </div>
+        <p class="class-note">Pick any and all that apply — all included in your entry fee.</p>
+        <div class="class-grid">
+          <label class="class-card">
+            <input type="checkbox" name="classes" value="Masters Choice">
+            <div class="box"><div class="checkmark"></div><div class="label">Masters Choice</div></div>
+          </label>
+          <label class="class-card">
+            <input type="checkbox" name="classes" value="Kids Choice">
+            <div class="box"><div class="checkmark"></div><div class="label">Kids Choice</div></div>
+          </label>
+          <label class="class-card">
+            <input type="checkbox" name="classes" value="Best Engine">
+            <div class="box"><div class="checkmark"></div><div class="label">Best Engine</div></div>
+          </label>
+          <label class="class-card">
+            <input type="checkbox" name="classes" value="Best Paint / Wrap">
+            <div class="box"><div class="checkmark"></div><div class="label">Best Paint / Wrap</div></div>
+          </label>
+          <label class="class-card" style="grid-column: 1 / -1;">
+            <input type="checkbox" name="classes" value="Best Customization / Mods">
+            <div class="box"><div class="checkmark"></div><div class="label">Best Customization / Mods</div></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="total-bar">
+        <div>
+          <div class="k">Total Due</div>
+          <div class="v">$25<span class="cents">.00</span></div>
+        </div>
+        <div style="color: var(--ink-dim); font-size: 13px; max-width: 260px; text-align: right;">
+          Complete payment via PayPal after clicking register.
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn">
+        Register & Continue to Payment <span class="arrow">→</span>
+      </button>
+
+      <p class="fine-print">
+        Your spot is reserved once payment is received.<br>
+        Questions? (314) 921-9000 · hzwmaa@gmail.com
+      </p>
+    </form>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div id="confirm-view" class="confirm">
+    <div class="checkmark-big">✓</div>
+    <h2>You're In.</h2>
+    <p>Registration received. Lock it in with payment — your spot is <strong style="color: var(--ink);">not confirmed</strong> until payment is complete.</p>
+    <div class="summary" id="summary-content"></div>
+    <a href="https://www.paypal.com/ncp/payment/V7LVQ2L2S97C4" target="_blank" rel="noopener" class="pay-btn">
+      Pay $25 via PayPal →
+    </a>
+    <p style="margin-top: 32px; color: var(--ink-dim); font-size: 13px; font-family: 'JetBrains Mono', monospace;">
+      A confirmation email is on its way.
+    </p>
+  </div>
+
+  <!-- CLOSED -->
+  <div id="closed-view" class="closed-view">
+    <h2>Registration Closed</h2>
+    <p>The May 9th registration deadline has passed, so we've locked the entry list.</p>
+    <p style="margin-top:24px;">Still come out and enjoy the show! <br><strong style="color:var(--ink);">May 23, 8 AM – Noon</strong> · 8002 N Lindbergh Blvd, Hazelwood, MO</p>
+    <p style="margin-top:24px;">Questions? (314) 921-9000 · hzwmaa@gmail.com</p>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="logo.png" alt="WMAA"></div>
+    <div class="footer-text">
+      <div class="name">WORLD MARTIAL ARTS ACADEMY</div>
+      8002 N LINDBERGH BLVD · HAZELWOOD, MO 63042<br>
+      (314) 921-9000 · HZWMAA@GMAIL.COM
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ====== CONFIG ======
+  const SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/V7LVQ2L2S97C4';
+  // Registration deadline: end of day May 9, 2026 Central
+  const DEADLINE = new Date('2026-05-10T05:00:00Z');
+  // ====================
+
+  if (new Date() > DEADLINE) {
+    document.getElementById('form-view').style.display = 'none';
+    document.getElementById('closed-view').classList.add('active');
+  }
+
+  const form = document.getElementById('registration-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorMsg = document.getElementById('error-msg');
+  const formView = document.getElementById('form-view');
+  const confirmView = document.getElementById('confirm-view');
+  const summaryContent = document.getElementById('summary-content');
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('active');
+    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function clearError() { errorMsg.classList.remove('active'); }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const data = {
+      firstName: form.firstName.value.trim(),
+      lastName: form.lastName.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      year: form.year.value.trim(),
+      make: form.make.value.trim(),
+      model: form.model.value.trim(),
+      description: form.description.value.trim(),
+      classes: [...form.querySelectorAll('input[name="classes"]:checked')].map(c => c.value)
+    };
+
+    if (!data.firstName || !data.lastName || !data.email || !data.phone ||
+        !data.year || !data.make || !data.model) {
+      showError('Please fill out all required fields.');
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) {
+      showError('Please enter a valid email address.');
+      return;
+    }
+    if (data.classes.length === 0) {
+      showError('Please select at least one competition class.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (!result.success) throw new Error(result.error || 'Submission failed');
+
+      summaryContent.innerHTML = `
+        <div class="summary-row">
+          <span class="k">Registration ID</span>
+          <span class="v">${result.registrationId || '—'}</span>
+        </div>
+        <div class="summary-row">
+          <span class="k">Driver</span>
+          <span class="v">${data.firstName} ${data.lastName}</span>
+        </div>
+        <div class="summary-row">
+          <span class="k">Vehicle</span>
+          <span class="v">${data.year} ${data.make} ${data.model}</span>
+        </div>
+        <div class="summary-row">
+          <span class="k">Classes</span>
+          <span class="v">${data.classes.join(', ')}</span>
+        </div>
+        <div class="summary-row">
+          <span class="k">Amount Due</span>
+          <span class="v" style="color: var(--orange);">$25.00</span>
+        </div>
+      `;
+      formView.style.display = 'none';
+      confirmView.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error(err);
+      showError('Something went wrong. Please try again, or call (314) 921-9000.');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Register & Continue to Payment <span class="arrow">→</span>';
+    }
+  });
+</script>
+
+</body>
+</html>
