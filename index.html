@@ -774,27 +774,46 @@
       </div>
 
       <button type="submit" id="submit-btn">
-        Register & Continue to Payment <span class="arrow">→</span>
+        Review & Pay <span class="arrow">→</span>
       </button>
 
       <p class="fine-print">
-        Your spot is reserved once payment is received.<br>
+        Your registration is only submitted once payment is completed.<br>
         Questions? (314) 921-9000 · hzwmaa@gmail.com
       </p>
     </form>
   </div>
 
-  <!-- CONFIRMATION -->
+  <!-- REVIEW & PAY GATE (after form submit, before payment) -->
   <div id="confirm-view" class="confirm">
+    <h2 style="color: var(--orange);">Almost There.</h2>
+    <p>Review your info below, then tap the button to complete payment. <strong style="color: var(--ink);">Your registration is not submitted until you complete payment.</strong></p>
+    <div class="summary" id="summary-content"></div>
+    <button id="pay-btn" class="pay-btn" style="border:none;cursor:pointer;font-family:'Anton',sans-serif;">
+      Pay $25 via PayPal →
+    </button>
+    <p style="margin-top: 24px; color: var(--ink-dim); font-size: 13px; line-height: 1.6; max-width: 420px; margin-left: auto; margin-right: auto;">
+      Clicking opens PayPal in a new tab. After payment, you'll get a confirmation email within a few minutes.
+    </p>
+    <p style="margin-top: 16px; color: var(--ink-dim); font-size: 12px; font-family: 'JetBrains Mono', monospace;">
+      <a href="#" id="back-btn" style="color: var(--ink-dim); text-decoration: underline;">← Edit my info</a>
+    </p>
+  </div>
+
+  <!-- FINAL CONFIRMATION (after PayPal click) -->
+  <div id="done-view" class="confirm">
     <div class="checkmark-big">✓</div>
     <h2>You're In.</h2>
-    <p>Registration received. Lock it in with payment — your spot is <strong style="color: var(--ink);">not confirmed</strong> until payment is complete.</p>
-    <div class="summary" id="summary-content"></div>
-    <a href="https://www.paypal.com/ncp/payment/V7LVQ2L2S97C4" target="_blank" rel="noopener" class="pay-btn">
-      Pay $25 via PayPal →
+    <p>Your registration has been submitted and a confirmation email is on the way.</p>
+    <div class="summary" id="done-summary"></div>
+    <p style="color: var(--ink-dim); font-size: 14px; max-width: 480px; margin: 0 auto 24px;">
+      If the PayPal tab didn't open, click below to reopen it. Your spot is <strong style="color: var(--orange);">only fully confirmed once payment is received.</strong>
+    </p>
+    <a href="https://www.paypal.com/ncp/payment/V7LVQ2L2S97C4" target="_blank" rel="noopener" class="pay-btn" style="font-size: 18px; padding: 14px 32px;">
+      Reopen PayPal →
     </a>
     <p style="margin-top: 32px; color: var(--ink-dim); font-size: 13px; font-family: 'JetBrains Mono', monospace;">
-      A confirmation email is on its way.
+      Questions? (314) 921-9000 · hzwmaa@gmail.com
     </p>
   </div>
 
@@ -837,7 +856,14 @@
   const errorMsg = document.getElementById('error-msg');
   const formView = document.getElementById('form-view');
   const confirmView = document.getElementById('confirm-view');
+  const doneView = document.getElementById('done-view');
   const summaryContent = document.getElementById('summary-content');
+  const doneSummary = document.getElementById('done-summary');
+  const payBtn = document.getElementById('pay-btn');
+  const backBtn = document.getElementById('back-btn');
+
+  // Hold the registration data in memory between review screen and actual submit
+  let pendingRegistration = null;
 
   function showError(msg) {
     errorMsg.textContent = msg;
@@ -846,7 +872,37 @@
   }
   function clearError() { errorMsg.classList.remove('active'); }
 
-  form.addEventListener('submit', async (e) => {
+  function buildSummaryHtml(data, regId) {
+    return `
+      ${regId ? `<div class="summary-row">
+        <span class="k">Registration ID</span>
+        <span class="v">${regId}</span>
+      </div>` : ''}
+      <div class="summary-row">
+        <span class="k">Driver</span>
+        <span class="v">${data.firstName} ${data.lastName}</span>
+      </div>
+      <div class="summary-row">
+        <span class="k">Email</span>
+        <span class="v" style="word-break: break-all;">${data.email}</span>
+      </div>
+      <div class="summary-row">
+        <span class="k">Vehicle</span>
+        <span class="v">${data.year} ${data.make} ${data.model}</span>
+      </div>
+      <div class="summary-row">
+        <span class="k">Classes</span>
+        <span class="v">${data.classes.join(', ')}</span>
+      </div>
+      <div class="summary-row">
+        <span class="k">Amount Due</span>
+        <span class="v" style="color: var(--orange); font-size: 18px;">$25.00</span>
+      </div>
+    `;
+  }
+
+  // STEP 1: Form submit — validates and shows review screen. Does NOT write to sheet.
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     clearError();
 
@@ -876,50 +932,57 @@
       return;
     }
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+    // Stash data in memory, show review screen. No sheet write yet.
+    pendingRegistration = data;
+    summaryContent.innerHTML = buildSummaryHtml(data, null);
+    formView.style.display = 'none';
+    confirmView.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // "Edit my info" link — go back to form
+  backBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    confirmView.classList.remove('active');
+    formView.style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // STEP 2: Pay button — opens PayPal AND submits registration to backend simultaneously.
+  payBtn.addEventListener('click', async () => {
+    if (!pendingRegistration) return;
+
+    // Open PayPal immediately in a new tab (must happen synchronously on click to avoid popup blockers)
+    const paypalWindow = window.open(PAYPAL_URL, '_blank', 'noopener');
+
+    // Disable button, show spinner while we save to sheet
+    payBtn.disabled = true;
+    payBtn.innerHTML = '<span class="spinner" style="border-top-color:#111;"></span> Submitting registration...';
 
     try {
       const response = await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(pendingRegistration)
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.error || 'Submission failed');
 
-      summaryContent.innerHTML = `
-        <div class="summary-row">
-          <span class="k">Registration ID</span>
-          <span class="v">${result.registrationId || '—'}</span>
-        </div>
-        <div class="summary-row">
-          <span class="k">Driver</span>
-          <span class="v">${data.firstName} ${data.lastName}</span>
-        </div>
-        <div class="summary-row">
-          <span class="k">Vehicle</span>
-          <span class="v">${data.year} ${data.make} ${data.model}</span>
-        </div>
-        <div class="summary-row">
-          <span class="k">Classes</span>
-          <span class="v">${data.classes.join(', ')}</span>
-        </div>
-        <div class="summary-row">
-          <span class="k">Amount Due</span>
-          <span class="v" style="color: var(--orange);">$25.00</span>
-        </div>
-      `;
-      formView.style.display = 'none';
-      confirmView.classList.add('active');
+      // Show final done view with registration ID
+      doneSummary.innerHTML = buildSummaryHtml(pendingRegistration, result.registrationId);
+      confirmView.classList.remove('active');
+      doneView.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (err) {
       console.error(err);
-      showError('Something went wrong. Please try again, or call (314) 921-9000.');
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Register & Continue to Payment <span class="arrow">→</span>';
+      payBtn.disabled = false;
+      payBtn.innerHTML = 'Pay $25 via PayPal →';
+      alert(
+        'Your PayPal payment page has opened, but we had trouble saving your registration.\n\n' +
+        'Please complete your PayPal payment, then call (314) 921-9000 with your name so we can add you to the list.'
+      );
     }
   });
 </script>
