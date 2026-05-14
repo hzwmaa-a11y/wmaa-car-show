@@ -937,7 +937,8 @@
     summaryContent.innerHTML = buildSummaryHtml(data, null);
     formView.style.display = 'none';
     confirmView.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to the review screen so the user lands on the content, not at the top of the page
+    confirmView.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // "Edit my info" link — go back to form
@@ -973,7 +974,7 @@
       doneSummary.innerHTML = buildSummaryHtml(pendingRegistration, result.registrationId);
       confirmView.classList.remove('active');
       doneView.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      doneView.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch (err) {
       console.error(err);
